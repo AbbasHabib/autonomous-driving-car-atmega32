@@ -1,7 +1,7 @@
 #include"../../UTIL/STD_TYPES.h"
 #include "../../UTIL/BIT_MATH.h"
 #include "../TIMER/TIMER_reg.h"
-
+#include "PWM_interface.h"
 
 
 

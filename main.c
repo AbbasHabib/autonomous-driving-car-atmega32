@@ -10,38 +10,11 @@
 
 
 int main(){
-	PORT_voidInit(); //  here we will set PB3 as output (OC0)
-	PWM0_VoidInit();
-	uint8 dutyCycle = 50;
-	PWM0_VoidSetDutyCycle(dutyCycle);
+	PORT_voidInit();
 
 
-	while(1){
-		PWM0_VoidSetDutyCycle(100);
 
-		DIO_u8SetPinValue(DIO_u8_PORTA, DIO_u8_PIN1, DIO_u8_PIN_LOW);
-		DIO_u8SetPinValue(DIO_u8_PORTA, DIO_u8_PIN0, DIO_u8_PIN_HIGH);
 
-		_delay_ms(500);
-
-		DIO_u8SetPinValue(DIO_u8_PORTA, DIO_u8_PIN0, DIO_u8_PIN_LOW);
-		DIO_u8SetPinValue(DIO_u8_PORTA, DIO_u8_PIN1, DIO_u8_PIN_HIGH);
-
-		_delay_ms(500);
-
-		PWM0_VoidSetDutyCycle(70);
-
-		DIO_u8SetPinValue(DIO_u8_PORTA, DIO_u8_PIN1, DIO_u8_PIN_LOW);
-		DIO_u8SetPinValue(DIO_u8_PORTA, DIO_u8_PIN0, DIO_u8_PIN_HIGH);
-
-		_delay_ms(500);
-
-		DIO_u8SetPinValue(DIO_u8_PORTA, DIO_u8_PIN0, DIO_u8_PIN_LOW);
-		DIO_u8SetPinValue(DIO_u8_PORTA, DIO_u8_PIN1, DIO_u8_PIN_HIGH);
-
-		_delay_ms(500);
-
-	}
 
 	return 0;
 }
