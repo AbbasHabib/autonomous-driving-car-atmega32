@@ -8,6 +8,8 @@
 #include "CLCD_private.h"
 #include "CLCD_config.h"
 
+
+#if CLCD_u8_MODE == FOUR_BIT
 static void SetDataPins(uint8 Copy_u8Data)
 {
 	DIO_u8SetPinValue(CLCD_u8_DATA_PORT,CLCD_u8_PIN4,GET_BIT(Copy_u8Data,0));
@@ -15,6 +17,7 @@ static void SetDataPins(uint8 Copy_u8Data)
 	DIO_u8SetPinValue(CLCD_u8_DATA_PORT,CLCD_u8_PIN6,GET_BIT(Copy_u8Data,2));
 	DIO_u8SetPinValue(CLCD_u8_DATA_PORT,CLCD_u8_PIN7,GET_BIT(Copy_u8Data,3));
 }
+#endif
 
 static void SendEnablePulse(void){
 	/*send enable pulse*/

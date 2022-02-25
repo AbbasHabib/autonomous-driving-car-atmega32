@@ -7,6 +7,7 @@
 #include "MCAL/PWM/PWM_interface.h"
 #include <util/delay.h>
 #include "MCAL/INTERRUPT/GIE_interface.h"
+#include "HAL/CLCD/CLCD_interface.h"
 
 uint16 volatile time_overflow = 0;
 
@@ -22,6 +23,9 @@ void __vector_9(void)
 
 int main(){
 	PORT_voidInit();
+	CLCD_voidInit();
+
+	//CLCD_voidClearDisplay();
 
 	// distance in cm = 17150 * TIMER
 	// = 17150 x (TIMER value) x 0.0625 x 10^-6 cm
@@ -69,6 +73,12 @@ int main(){
 		count += 65535 * time_overflow;
 
 		float32 distance = (float32)count / 923.94;
+		CLCD_sendString("distance: ");
+		CLCD_sendNumebr((uint32)distance);
+		_delay_ms(200);
+		CLCD_voidClearDisplay();
+
+
 
 	}
 
