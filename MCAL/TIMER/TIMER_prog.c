@@ -10,7 +10,7 @@
 static void (*Timer0ovf_pvCallBackFunc)(void) = NULL;
 
 
-void TIMER0_Init(void)
+void TIMER0_VoidInit(void)
 {
 	/*Wave generation mode : Normal*/
 		CLR_BIT(TCCR0,TCCR0_WGM00);
@@ -26,8 +26,30 @@ void TIMER0_Init(void)
 		CLR_BIT(TCCR0,TCCR0_CS02);
 	/*Compare mode interrupt enable*/
 		SET_BIT(TIMSK,TIMSK_OCIE0);
+}
+
+uint8 TIMEROvf_u8Enable(uint8 Copy_u8TimerNumber){
+	uint8 Local_u8ErrorState = OK;
+	switch(Copy_u8TimerNumber){
+	case TIMER0:
+		SET_BIT(TIMSK, TIMSK_TOIE0);
+		break;
+	case TIMER1:
+		SET_BIT(TIMSK, TIMSK_TOIE1);
+		break;
+	case TIMER2:
+		SET_BIT(TIMSK, TIMSK_TOIE2);
+		break;
+	default:
+		Local_u8ErrorState = NOK;
+		break;
+	}
+	return Local_u8ErrorState;
 
 }
+
+
+
 
 uint8 TIMER0ovf_u8SetCallBack(void(*Copy_pvCallBackFunc)(void))
 {
