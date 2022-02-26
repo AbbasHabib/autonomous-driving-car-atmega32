@@ -1,7 +1,7 @@
 #ifndef CLCD_CONFIG_H_
 #define CLCD_CONFIG_H_
 
-#define CLCD_u8_DATA_PORT		DIO_u8_PORTB
+#define CLCD_u8_DATA_PORT		DIO_u8_PORTA
 /*Choose your connection mode , options : 1- EIGHT_BIT
  * 										  2- FOUR_BIT*/
 #define CLCD_u8_MODE			EIGHT_BIT

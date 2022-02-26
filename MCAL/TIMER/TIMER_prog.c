@@ -49,6 +49,26 @@ uint8 TIMEROvf_u8Enable(uint8 Copy_u8TimerNumber){
 }
 
 
+uint8 TIMEROvf_u8Disable(uint8 Copy_u8TimerNumber){
+	uint8 Local_u8ErrorState = OK;
+	switch(Copy_u8TimerNumber){
+	case TIMER0:
+		CLR_BIT(TIMSK, TIMSK_TOIE0);
+		break;
+	case TIMER1:
+		CLR_BIT(TIMSK, TIMSK_TOIE1);
+		break;
+	case TIMER2:
+		CLR_BIT(TIMSK, TIMSK_TOIE2);
+		break;
+	default:
+		Local_u8ErrorState = NOK;
+		break;
+	}
+	return Local_u8ErrorState;
+
+}
+
 
 
 uint8 TIMER0ovf_u8SetCallBack(void(*Copy_pvCallBackFunc)(void))

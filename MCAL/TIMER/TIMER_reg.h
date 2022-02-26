@@ -53,6 +53,10 @@
 #define TCNT1L		 *((volatile uint8*)0x4C)
 
 #define OCR0		 *((volatile uint8*)0x5c)
+#define OCR1AH		 *((volatile uint8*)0x4B)
+#define OCR1AL		 *((volatile uint8*)0x5A)
+
+
 
 #define TIMSK		 *((volatile uint8*)0x59)
 
