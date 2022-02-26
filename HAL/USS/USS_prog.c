@@ -59,7 +59,7 @@ uint32 calcuteDistance(){
 
 	/* current count */
 	uint32 count  = ICR1L;
-	count = count | ICR1H << 8;
+	count = count | (ICR1H << 8);
 
 	count += TIMER1_MAX_COUNT * TIMER1_OVER_FLOW;
 

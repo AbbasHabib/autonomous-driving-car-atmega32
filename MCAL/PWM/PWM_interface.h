@@ -3,5 +3,4 @@
 
 void PWM0_VoidInit(void);
 void PWM0_VoidSetDutyCycle(uint8 Copy_u8DutyCycle);
-
 #endif
