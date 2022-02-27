@@ -23,13 +23,17 @@
 
 ![flow chart](images/flowChart.png)
 
+#
+
+## ⚠ Notice the code below is just demonstarion not the acutal code to run the process
+
+#
+
 # Ultra Soncic Sensor (**_HC-SR04_**) 🔦👓
 
 ### Ultrasonic is placed on servo motor axis, its function to detect the obstacles on the car way.
 
 ### If the car found an obstacle, it must change its way according to the ultrasonic data
-
-## ⚠ Notice the code below is just demonstarion not the acutal code to run the process
 
 ATmega16 microcontroller needs to transmit a 10 us trigger pulse to the HC-SR04 Trig Pin.
 
