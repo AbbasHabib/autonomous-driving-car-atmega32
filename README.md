@@ -1,6 +1,15 @@
-## this project is submited to [AMIT LEARNING](https://www.amit-learning.com/home)
+## This project is submited to [AMIT LEARNING](https://www.amit-learning.com/home)
 
 ### In a nutshell the project is an autonomous car that detect obstacles and avoid them.
+
+#### **_Used Components_**
+
+- **ATMAGA32**
+- ATMEGA32 Flash circuit. _AMIT AVR BOARD_ is used for flashing.
+- Ultrasonic **HC- SR04**.
+- Servo motor **SG90**.
+- 2 DC Motors with wheels.
+- H-Bridge **L293D**.
 
 # The project in action 🚗
 
