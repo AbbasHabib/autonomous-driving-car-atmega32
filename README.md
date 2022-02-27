@@ -6,6 +6,10 @@
 
 ![proteus USS_CLCD](images/Proteus_USS_CLCD.JPG)
 
+# Flow chart 📄
+
+![flow chart](images/flowChart.png)
+
 # Ultra Soncic Sensor HC-SR04 🔦👓
 
 ### Ultrasonic is placed on servo motor axis, its function to detect the obstacles on the car way.
