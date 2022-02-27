@@ -14,7 +14,7 @@
 
 ![flow chart](images/flowChart.png)
 
-# Ultra Soncic Sensor HC-SR04 🔦👓
+# Ultra Soncic Sensor (**_HC-SR04_**) 🔦👓
 
 ### Ultrasonic is placed on servo motor axis, its function to detect the obstacles on the car way.
 
@@ -69,7 +69,7 @@ As soon as the falling edge is captured at the Echo pin. We caluclate the distan
 	return (uint32)((float32)count / 923.94); /* distance */
 ```
 
-# CLCD 📺
+# CLCD (**_LM016L_**)📺
 
 LCD is used to display the distance between the car and the object the USS pointing at, display the current direction of the Servo motor, and the car moving state (Forward **F**, Backward Right **BR**, Backward Left **BL**, Rotating around it self **RR**)
 
@@ -109,7 +109,7 @@ To initalialize the CLCD we send a certain command to the uc implemented in the 
 CLCD_voidSendCommand(0b00111000);
 ```
 
-# Motor 🏍
+# Motor - H-Bridge (**_L298N_**) 🏍
 
 Every motor in the code is an instance of a struct.
 
@@ -165,7 +165,7 @@ controlling direction of the motor
     }
 ```
 
-# Servo Motor ♾
+# Servo Motor (**_SG90_**)♾
 
 The servo motor driver it written in the easiest way possible.
 By calculting the amount of delay required to rotate to a certain angle using some math. The motor is rotated to the given angle value.
