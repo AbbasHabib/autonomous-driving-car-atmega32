@@ -13,8 +13,9 @@
 #include "HAL/MOTOR/MOTOR_interface.h"
 
 
-#define CRITICAL_u8_DISTANCE 90
-#define CAR_u16_OBSTCALE_SKIP_TIME 1000
+#define CRITICAL_u8_DISTANCE 		90
+#define CAR_u16_OBSTCALE_SKIP_TIME 	1000
+#define SERVO_u8_DELAY				200
 
 struct Motor MOTOR1, MOTOR2;
 
@@ -53,6 +54,7 @@ uint8 MoveServo180Degrees(){
 	else{
 		/* nothing */
 	}
+	_delay_ms(SERVO_u8_DELAY);
 	return Local_u8Direction;
 }
 
