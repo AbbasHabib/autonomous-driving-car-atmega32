@@ -2,7 +2,7 @@
 
 ![car_in_action](images/Car_inAction.gif)
 
-# Proteus simulation for USS and CLCD ⚙
+# Proteus simulation ⚙
 
 ![proteus USS_CLCD](images/Proteus_USS_CLCD.JPG)
 
@@ -64,6 +64,7 @@ As soon as the falling edge is captured at the Echo pin. We caluclate the distan
 # CLCD 📺
 
 LCD is used to display the distance between the car and the object the USS pointing at, display the current direction of the Servo motor, and the car moving state (Forward **F**, Backward Right **BR**, Backward Left **BL**, Rotating around it self **RR**)
+
 ![CLCD_with_car_current_state](images/CLCD_With_Car_State.jpeg)
 
 ### sending a command 📤
