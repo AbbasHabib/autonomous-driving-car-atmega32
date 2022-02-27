@@ -83,7 +83,7 @@ uint32 USS_u32GetDistance(void){
 	TCNT1H = 0;	/* Clear Timer1 counter */
 	TCNT1L = 0;
 
-	setICP_RisingEdge();/* set capture on rising edge and start timer */
+	setICP_RisingEdge(); /* set capture on rising edge and start timer */
 	Clear_Timer1Flags(); /* clear TIMER1 ovf and ICP flag from TIFR*/
 
 	/* when ICP1 receives a rising edge TIFR_ICF1 in TIFR will get triggered*/

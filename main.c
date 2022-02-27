@@ -13,7 +13,7 @@
 #include "HAL/MOTOR/MOTOR_interface.h"
 
 
-#define CRITICAL_u8_DISTANCE 		90
+#define CRITICAL_u8_DISTANCE 		20
 #define CAR_u16_OBSTCALE_SKIP_TIME 	1000
 #define SERVO_u8_DELAY				200
 
@@ -73,7 +73,7 @@ void voidInitMotors(){
 
 void voidCheckObstacle_MoveAccordingly(uint32 Copy_32USSDistance, uint8 Copy_u8Dirction){
 	if(Copy_32USSDistance <= CRITICAL_u8_DISTANCE){
-		MOTOR_voidSetMotorsPWMDutyCycle(100);
+		MOTOR_voidSetMotorsPWMDutyCycle(50);
 		switch(Copy_u8Dirction){
 		case 'L':
 			MOTOR_u8MoveMotor(MOTOR1, MOTOR_u8_ANTICLOCKWISE);
@@ -92,7 +92,7 @@ void voidCheckObstacle_MoveAccordingly(uint32 Copy_32USSDistance, uint8 Copy_u8D
 		}
 	}
 	else{
-		MOTOR_voidSetMotorsPWMDutyCycle(100);
+		MOTOR_voidSetMotorsPWMDutyCycle(80);
 		MOTOR_u8MoveMotor(MOTOR1, MOTOR_u8_CLOCKWISE);
 		MOTOR_u8MoveMotor(MOTOR2, MOTOR_u8_CLOCKWISE);
 	}
