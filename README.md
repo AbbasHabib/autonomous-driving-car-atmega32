@@ -1,4 +1,4 @@
-## this project is submited to ![AMIT LEARNING](https://www.amit-learning.com/home)
+## this project is submited to [AMIT LEARNING](https://www.amit-learning.com/home)
 
 ### In a nutshell the project is an autonomous car that detect obstacles and avoid them.
 
