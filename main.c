@@ -49,7 +49,7 @@ uint8 MoveServo180Degrees(){
 		Local_u8Direction = ' ';
 		break;
 	}
-
+	/* rotate servo according to changes */
 	SERVO_voidRotateToAngle(Local_u8CurrentAngle);
 	if(Local_u8CurrentAngle <= 1 || Local_u8CurrentAngle >= 100)
 		Local_u8IncFlag = !Local_u8IncFlag;
@@ -62,6 +62,7 @@ uint8 MoveServo180Degrees(){
 
 
 void voidInitMotors(){
+	/* sets port and pin numbers of the connected motors */
 	MOTOR1.motor_u8_port = DIO_u8_PORTB;
 	MOTOR1.motor_u8_pin1 = DIO_u8_PIN4;
 	MOTOR1.motor_u8_pin2 = DIO_u8_PIN5;
@@ -74,6 +75,9 @@ void voidInitMotors(){
 
 
 void voidCheckObstacle_MoveAccordingly(uint32 Copy_32USSDistance, uint8 Copy_u8Dirction){
+	/* 	check if ultrasonic measured distance (Copy_32USSDistance) lower than the critical value
+	 *	if true then move according to the direction of Servo motor (Copy_u8Dirction)
+	 */
 	if(Copy_32USSDistance <= CRITICAL_u8_DISTANCE){
 		MOTOR_voidSetMotorsPWMDutyCycle(50);
 		switch(Copy_u8Dirction){
@@ -102,20 +106,26 @@ void voidCheckObstacle_MoveAccordingly(uint32 Copy_32USSDistance, uint8 Copy_u8D
 }
 
 char* charptrCarDirection(uint32 Copy_32USSDistance, uint8 Copy_u8Dirction){
+	/* this function returns a string of 3 letters descriping the current
+	 * direction the car is taking
+	 */
 	static char Local_carDir[3] = "F \0";
 	Local_carDir[0] = 'F';
 	Local_carDir[1] = ' ';
 	if(Copy_32USSDistance <= CRITICAL_u8_DISTANCE){
 		switch(Copy_u8Dirction){
 		case 'L':
+			/* Backward - Right */
 			Local_carDir[0] = 'B';
 			Local_carDir[1] = 'R';
 			break;
 		case 'R':
+			/* Backward - Left */
 			Local_carDir[0] = 'B';
 			Local_carDir[1] = 'L';
 			break;
 		case 'C':
+			/* rotate arount it self */
 			Local_carDir[0] = 'R';
 			Local_carDir[1] = 'R';
 			break;
