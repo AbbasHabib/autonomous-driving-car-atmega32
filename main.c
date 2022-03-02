@@ -28,6 +28,8 @@ uint8 MoveServo180Degrees(){
 	/* This function moves the servo 0 to 90 to 180 and back
 	 * based on the last angle stored in Local_u8CurrentAngle static variable  */
 	static uint8 Local_u8CurrentAngle = 0;
+	/* inc_flag is used ro rotate the servo on the
+	 * specified angles Clock wise or anti clock wise */
 	static uint8 Local_u8IncFlag = 1;
 	uint8 Local_u8Direction = ' ';
 	if(Local_u8IncFlag)
@@ -98,6 +100,7 @@ void voidCheckObstacle_MoveAccordingly(uint32 Copy_32USSDistance, uint8 Copy_u8D
 		}
 	}
 	else{
+		/* set speed of the motor by chaning dutycycle */
 		MOTOR_voidSetMotorsPWMDutyCycle(80);
 		MOTOR_u8MoveMotor(MOTOR1, MOTOR_u8_CLOCKWISE);
 		MOTOR_u8MoveMotor(MOTOR2, MOTOR_u8_CLOCKWISE);
