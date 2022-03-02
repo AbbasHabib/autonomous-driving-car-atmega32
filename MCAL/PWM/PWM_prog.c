@@ -19,7 +19,7 @@ void PWM0_VoidInit(void){
 
 
 void PWM0_VoidSetDutyCycle(uint8 Copy_u8DutyCycle){
-	// on time
+	// OCR0 holds the on time of the cycle
 	OCR0 = 255 - ((float32)Copy_u8DutyCycle / 100.0f) * 255.0f;
 }
 
