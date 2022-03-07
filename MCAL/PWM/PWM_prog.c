@@ -6,14 +6,19 @@
 
 
 void PWM0_VoidInit(void){
-	// OC0
-	// fast PWM mode
+	/* Configuring timer0 registers
+	 * to fast PWM mode
+	 *  */
 		SET_BIT(TCCR0,TCCR0_WGM00);
 		SET_BIT(TCCR0,TCCR0_WGM01);
-	// inverted PWM mode
+	/* inverted PWM mode
+	 * Set OC0 on compare match, clear OC0 at overflow
+	 * when timerCount = OCR0, set OC0 -> PB3 pin else
+	 * */
 		SET_BIT(TCCR0,TCCR0_COM00);
 		SET_BIT(TCCR0,TCCR0_COM01);
-	// no prescale
+	/* no prescale
+	 * and start timer0*/
 		SET_BIT(TCCR0,TCCR0_CS00);
 }
 

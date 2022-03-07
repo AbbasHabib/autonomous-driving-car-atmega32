@@ -24,6 +24,7 @@ void USS_voidInit(void){
 
 void setICP_RisingEdge(){
 	/* wait for rising edge on USS_ECHO pin (input capture pin ICP1)*/
+	/* change bits of timer counter control 1 */
 	SET_BIT(TCCR1B, TCCR1B_ICES1); /* set capture on rising edge */
 	SET_BIT(TCCR1B, TCCR1B_CS10); /* start timer with no prescaler */
 }
@@ -58,8 +59,8 @@ uint32 calcuteDistance(){
 		 */
 
 	/* current count */
-	uint32 count  = ICR1L;
-	count = count | (ICR1H << 8);
+	uint32 count  = (uint16)ICR1L;
+	//count = count | (ICR1H << 8);
 
 	count += TIMER1_MAX_COUNT * TIMER1_OVER_FLOW;
 
