@@ -35,7 +35,7 @@
 
 ### If the car found an obstacle, it must change its way according to the ultrasonic data
 
-ATmega16 microcontroller needs to transmit a 10 us trigger pulse to the HC-SR04 Trig Pin.
+Transmit a 10 us trigger pulse to the HC-SR04 Trig Pin.
 
 ```
     DIO_u8SetPinValue(USS_u8_TRIGGER_PORT, USS_u8_TRIGGER_PIN, DIO_u8_PIN_HIGH);
