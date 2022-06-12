@@ -37,7 +37,7 @@
 
 Transmit a 10 us trigger pulse to the HC-SR04 Trig Pin.
 
-```
+```c++
     DIO_u8SetPinValue(USS_u8_TRIGGER_PORT, USS_u8_TRIGGER_PIN, DIO_u8_PIN_HIGH);
 	_delay_us(10);
 	DIO_u8SetPinValue(USS_u8_TRIGGER_PORT, USS_u8_TRIGGER_PIN, DIO_u8_PIN_LOW);
@@ -46,14 +46,14 @@ Transmit a 10 us trigger pulse to the HC-SR04 Trig Pin.
 
 After getting a trigger pulse, HC-SR04 (USS) sends eight 40 kHz sound waves and. When the sound waves are sent the USS the output at the Echo pin gets raised. So we wait for the rising edge with the uc (ATMEGA32). We capture the falling edge using **input capute mode** found and pin PD6(ICP1).
 
-```
+```c++
 setICP_RisingEdge(); /* set input captre mode to Rising edge at ICP1 */
 while ((TIFR & (1 << TIFR_ICF1)) == 0); /* wait for Rising edge */
 ```
 
 When the rising edge captured , start Timer of the uc(ATMEGA32) and again wait for a falling edge on the Echo pin. The input caputue mode is changed to capture falling edge.
 
-```
+```c++
 setICP_FallingEdge(); /* set capture on falling edge and start timer */
 while ((TIFR & (1 << TIFR_ICF1)) == 0);/* Wait for falling edge */
 
@@ -61,7 +61,7 @@ while ((TIFR & (1 << TIFR_ICF1)) == 0);/* Wait for falling edge */
 
 As soon as the falling edge is captured at the Echo pin. We caluclate the distance using the counted time with number of occured overflows.
 
-```
+```c++
 /*
 		this calculation is based on the used crystal oscillator
 		which is 16 MHZ
@@ -93,7 +93,7 @@ LCD is used to display the distance between the car and the object the USS point
 🔔 Notice below in the CLCD configration file you can configure the number of pins you could use to control the LCD.
 either **FOUR_BIT** mode, or **EIGHT_BIT** mode.
 
-```
+```c++
 void CLCD_voidSendCommand(uint8 Copy_u8Command)
 {
 	/*Set Rs pin to low for command*/
@@ -118,7 +118,7 @@ void CLCD_voidSendCommand(uint8 Copy_u8Command)
 
 To initalialize the CLCD we send a certain command to the uc implemented in the CLCD module.
 
-```
+```c++
 CLCD_voidSendCommand(0b00111000);
 ```
 
@@ -126,7 +126,7 @@ CLCD_voidSendCommand(0b00111000);
 
 Every motor in the code is an instance of a struct.
 
-```
+```c++
 // every instance would take 16 bits = 2 bytes
 struct Motor{
 	uint8 motor_u8_port 		: 4;
@@ -142,7 +142,7 @@ In this case I have 2 motors to control. That are connected to a single H-bridge
 PWM is used to control the **_speed of the motors_**.
 In this program Timer0 is configured to generate PWM signal at **OC0** (**PB3**).
 
-```
+```c++
 	/* Timer 0 configration */
 	/* fast PWM mode */
 		SET_BIT(TCCR0,TCCR0_WGM00);
@@ -156,7 +156,7 @@ In this program Timer0 is configured to generate PWM signal at **OC0** (**PB3**)
 
 Control of PWM Duty cycle.
 
-```
+```c++
 void PWM0_VoidSetDutyCycle(uint8 Copy_u8DutyCycle){
 	// on time
 	OCR0 = 255 - ((float32)Copy_u8DutyCycle / 100.0f) * 255.0f;
@@ -165,7 +165,7 @@ void PWM0_VoidSetDutyCycle(uint8 Copy_u8DutyCycle){
 
 controlling direction of the motor
 
-```
+```c++
 	switch(Copy_u8Dirction){
 	case MOTOR_u8_CLOCKWISE:
 		DIO_u8SetPinValue(Copy_Motor.motor_u8_port, Copy_Motor.motor_u8_pin1, DIO_u8_PIN_LOW);
@@ -183,7 +183,7 @@ controlling direction of the motor
 The servo motor driver it written in the easiest way possible.
 By calculting the amount of delay required to rotate to a certain angle using some math. The motor is rotated to the given angle value.
 
-```
+```c++
 void SERVO_voidRotateToAngle(uint8 Copy_u8AngleValue){
 	float32 Local_DelayValue = (1009.0f * (float32)Copy_u8AngleValue) / 50.0;
 	DIO_u8SetPinValue(SERVO_u8_PORT, SERVO_u8_PIN, DIO_u8_PIN_HIGH);
