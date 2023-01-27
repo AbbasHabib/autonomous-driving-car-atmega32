@@ -1,4 +1,4 @@
-## This project is submited to [AMIT LEARNING](https://www.amit-learning.com/home)
+## atmega32 autonomous driving vehicle
 
 ### In a nutshell the project is an autonomous car that detect obstacles and avoid them.
 
